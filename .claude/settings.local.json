@@ -2,7 +2,18 @@
   "permissions": {
     "allow": [
       "PowerShell(Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd \"C:\\\\Users\\\\PearsonVue_User\\\\Desktop\\\\VSC\"; python -m http.server 8080')",
-      "Bash(gh --version)"
+      "Bash(gh --version)",
+      "PowerShell(winget install *)",
+      "PowerShell(gh *)",
+      "Bash(npx *)",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(docker --version)",
+      "PowerShell(python --version)",
+      "PowerShell(winget --version)"
     ]
-  }
+  },
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
 }

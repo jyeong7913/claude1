@@ -6,6 +6,8 @@ A single-page travel guide featuring curated city cards, detailed destination gu
 
 **[Live Site](https://jyeong7913.github.io/claude1/)**
 
+![Travel Explorer Preview](screenshot.png)
+
 ---
 
 ## Features
