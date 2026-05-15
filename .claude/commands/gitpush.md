@@ -125,9 +125,17 @@ Report the push output to the user.
 
 ---
 
-## Step 6 — Update GitHub repository About
+## Step 6 — Update GitHub repository About (REQUIRED)
 
-Run the following to set a description and homepage on the repo:
+This step is required. Do NOT skip it.
+
+First check if `gh` is authenticated:
+
+```powershell
+gh auth status
+```
+
+If authenticated, run:
 
 ```powershell
 gh repo edit jyeong7913/claude1 `
@@ -135,7 +143,12 @@ gh repo edit jyeong7913/claude1 `
   --homepage "https://jyeong7913.github.io/claude1/"
 ```
 
-If `gh` is not authenticated, inform the user and skip this step gracefully.
+If NOT authenticated, do NOT skip — instead:
+1. Run `gh auth login` and follow the prompts to authenticate via browser.
+2. Once authenticated, immediately re-run the `gh repo edit` command above.
+3. Confirm to the user that the About section was updated successfully.
+
+Only mark this step as skipped if `gh` is not installed at all (not found in PATH).
 
 ---
 
@@ -145,5 +158,5 @@ Print a short summary:
 - Secret scan: PASSED / FAILED
 - Files committed: list them
 - Push status: success / failure + any error message
-- Repo About updated: yes / skipped
+- Repo About updated: yes / FAILED (explain why)
 - Live URL: https://jyeong7913.github.io/claude1/
