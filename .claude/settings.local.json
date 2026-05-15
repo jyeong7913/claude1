@@ -10,7 +10,8 @@
       "PowerShell(npm --version)",
       "PowerShell(docker --version)",
       "PowerShell(python --version)",
-      "PowerShell(winget --version)"
+      "PowerShell(winget --version)",
+      "WebFetch(domain:www.skills.sh)"
     ]
   },
   "enabledMcpjsonServers": [
