@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Travel Explorer — We went, so you know where to go.</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -556,14 +555,7 @@ footer strong{color:var(--white)}
 </footer>
 
 <script>
-// ─────────────────────────────────────────────
-// EMAILJS CONFIG — sign up free at emailjs.com
-// ─────────────────────────────────────────────
-const EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';
-const ENQUIRY_RECIPIENT    = 'skyjy@hmm21.com';
-emailjs.init(EMAILJS_PUBLIC_KEY);
+const ENQUIRY_RECIPIENT = 'skyjy@hmm21.com';
 
 // ─────────────────────────────────────────────
 // CITY DATA
@@ -1272,17 +1264,19 @@ function submitEnquiry(formId, successId) {
   existing.push(data);
   localStorage.setItem('travelEnquiries', JSON.stringify(existing));
 
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    to_email:    ENQUIRY_RECIPIENT,
-    from_name:   data.name,
-    from_email:  data.email,
-    phone:       data.phone || 'N/A',
-    destination: data.destination,
-    travel_date: data.travelDate,
-    travellers:  data.travellers,
-    message:     data.message || 'N/A',
-    submitted_at: data.submittedAt
-  });
+  const subject = encodeURIComponent('Travel Enquiry: ' + data.destination + ' — ' + data.name);
+  const body = encodeURIComponent(
+    'New travel enquiry received:\n\n' +
+    'Name:         ' + data.name + '\n' +
+    'Email:        ' + data.email + '\n' +
+    'Phone:        ' + (data.phone || 'N/A') + '\n' +
+    'Destination:  ' + data.destination + '\n' +
+    'Travel Date:  ' + data.travelDate + '\n' +
+    'Travellers:   ' + data.travellers + '\n' +
+    'Message:      ' + (data.message || 'N/A') + '\n\n' +
+    'Submitted:    ' + data.submittedAt
+  );
+  window.location.href = 'mailto:' + ENQUIRY_RECIPIENT + '?subject=' + subject + '&body=' + body;
 
   form.reset();
   const msg = document.getElementById(successId);
