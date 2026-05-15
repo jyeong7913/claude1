@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd \"C:\\\\Users\\\\PearsonVue_User\\\\Desktop\\\\VSC\"; python -m http.server 8080')"
+      "PowerShell(Start-Process powershell -ArgumentList '-NoExit', '-Command', 'cd \"C:\\\\Users\\\\PearsonVue_User\\\\Desktop\\\\VSC\"; python -m http.server 8080')",
+      "Bash(gh --version)"
     ]
   }
 }
